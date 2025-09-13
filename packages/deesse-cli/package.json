@@ -1,0 +1,25 @@
+{
+  "name": "deesse",
+  "version": "0.0.1",
+  "description": "Advanced CLI for DeesseJS framework",
+  "bin": {
+    "deesse": "dist/index.js"
+  },
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "execa": "^8.0.1",
+    "fs-extra": "^11.2.0",
+    "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.5",
+    "typescript": "^5.6.3"
+  }
+}
