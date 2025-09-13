@@ -1,6 +1,6 @@
 {
   "name": "create-deesse-app",
-  "version": "0.0.1",
+  "version": "0.0.6",
   "description": "CLI to bootstrap a new DeesseJS project",
   "bin": {
     "create-deesse-app": "bin/index.js"
