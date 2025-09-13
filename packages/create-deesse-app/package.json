@@ -1,0 +1,16 @@
+{
+  "name": "create-deesse-app",
+  "version": "0.0.1",
+  "description": "CLI to bootstrap a new DeesseJS project",
+  "bin": {
+    "create-deesse-app": "bin/index.js"
+  },
+  "type": "module",
+  "files": [
+    "bin"
+  ],
+  "dependencies": {
+    "prompts": "^2.4.2",
+    "execa": "^8.0.1"
+  }
+}
