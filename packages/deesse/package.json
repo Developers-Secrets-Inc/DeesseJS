@@ -1,13 +1,29 @@
 {
   "name": "deesse",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "resend": "^6.0.3"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./emails": {
+      "import": "./dist/emails/index.js",
+      "types": "./dist/emails/index.d.ts"
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.x.x"
   }
 }

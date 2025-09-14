@@ -1,9 +1,9 @@
 {
-  "name": "deesse",
-  "version": "0.0.2",
+  "name": "deesse-cli",
+  "version": "0.0.3",
   "description": "Advanced CLI for DeesseJS framework",
   "bin": {
-    "deesse": "bin/index.js"
+    "deesse-cli": "bin/index.js"
   },
   "type": "module",
   "files": [

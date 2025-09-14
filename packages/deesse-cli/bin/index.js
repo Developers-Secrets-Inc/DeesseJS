@@ -4,7 +4,7 @@ import { Command } from "commander";
 const program = new Command();
 
 program
-  .name("deesse")
+  .name("deesse-cli")
   .description("CLI for DeesseJS framework")
   .version("0.0.1");
 
