@@ -1,0 +1,13 @@
+- cache 
+- reactivity 
+- plugins 
+  - vercel plugin 
+  - add a required plugin system 
+  - ai chat plugin 
+  - background jobs and tasks 
+  - emails 
+  - SEO 
+  - blog 
+  - changelog 
+  - docs 
+- admin notifications 
