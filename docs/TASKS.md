@@ -1,6 +1,5 @@
 
 
-- Add complete PayloadCMS support 
 - Add auth support 
 - Complete Context type for db functions 
   - Add `ctx.db` as an alias for `payload({config})` 
