@@ -8,6 +8,32 @@ The configuration system works with a `buildConfig` function. This function take
 
 The `buildConfig` function serves as the main configuration builder that accepts the application secret and initializes all the plugins that will extend the framework's functionality.
 
+## Configuration Type Definition
+
+The configuration system is built around the `Config` type, which defines the structure of the configuration object:
+
+```typescript
+type Config = {
+  secret: string;
+  admin: AdminConfig;
+  auth: AuthConfig;
+  plugins: Plugin[];
+};
+```
+
+Where:
+- `secret`: A string representing the application secret
+- `admin`: An `AdminConfig` object for administrative settings, which includes a `defaultLanguage` field
+- `auth`: An `AuthConfig` object for authentication configuration
+- `plugins`: An array of `Plugin` objects for extending functionality
+
+The `AdminConfig` type includes at least:
+```typescript
+type AdminConfig = {
+  defaultLanguage: string;
+};
+```
+
 ## Configuration Example
 
 Here's an example of a typical `deesse.config.ts` file:
