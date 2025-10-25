@@ -190,6 +190,33 @@ db.posts.find({
 });
 ```
 
+## Admin Dashboard Collections Page
+
+The admin dashboard will include a dedicated `/collections` page that provides a comprehensive Content Management System (CMS) interface. This page will display all registered collections and allow administrators to manage individual entries through a clean, intuitive interface.
+
+### Collections Page Features
+
+**Collection Listing**:
+- Display all available collections in an organized grid or list view
+- Show collection metadata: name, description, number of entries, last updated
+- Quick access to each collection's management interface
+- Search and filter capabilities across all collections
+
+**Individual Collection Management**:
+For each collection, administrators can:
+- **View Entries**: Browse all entries with pagination, sorting, and filtering options
+- **Create New Entries**: Add new documents with form-based interface using the collection schema
+- **Edit Entries**: Modify existing entries with auto-generated forms based on field definitions
+- **Delete Entries**: Remove entries with confirmation dialogs
+- **Bulk Operations**: Select multiple entries for actions like delete or status updates
+
+**Form Generation**:
+- Auto-generated forms based on collection field definitions
+- Field type-appropriate input components (text fields, date pickers, rich text editors, etc.)
+- Real-time validation using the collection schema constraints
+- Relation field handling for dropdown selection and autocomplete
+- Permission-aware field visibility (only show fields user can access)
+
 ## Collections Information API
 
 We will provide an API that allows introspection of collections and their field definitions. This enables runtime access to collection metadata, field types, and permissions:
