@@ -11,6 +11,7 @@ The system provides a comprehensive Better Auth configuration integrated directl
 - This object will contain most of the Better Auth configuration options
 - Provides a centralized location for all authentication-related settings
 
+
 ### Auth Route Handler
 
 **Server Route**: `/app/api/auth/[...all]/route.ts`
@@ -18,18 +19,35 @@ The system provides a comprehensive Better Auth configuration integrated directl
 - Automatically handles all authentication-related API calls (login, logout, session, etc.)
 - Uses Better Auth's built-in route handling with Next.js middleware
 
-### Auth Client Export
+```typescript
+// Next.js API route handler
+import { handler } from "@deesse/auth";
 
-**Client-side Access**: `import { authClient } from "@deesse/auth"`
-- Auth client components and functions can be imported from `@deesse/auth`
-- Provides pre-configured auth client for seamless integration
-- Handles client-side authentication flow automatically
+// The handler function provides both POST and GET methods
+export { POST, GET } = handler();
+```
+
+### Auth Configuration Export
+
+**Configuration Access**: `import { auth } from "@deesse/auth"`
+- Better Auth configuration object can be imported from `@deesse/auth`
+- Provides the complete auth configuration for server-side setup
+- Database adapter is configured based on the database configuration from `deesse.config.ts`
+- Additional Better Auth options are provided from the project's auth configuration object
+- Admin plugin is included by default to support admin dashboard functionality
 
 ### Integration Example
 
 ```typescript
 // deesse.config.ts
-export default {
+import { buildConfig } from "deesse/config";
+import { auth } from "@deesse/auth";
+
+export default buildConfig({
+  secret: process.env.DEESEE_SECRET || "your-secret-key-here",
+  admin: {
+    defaultLanguage: "fr"
+  },
   auth: {
     // Better Auth configuration options
     providers: [
@@ -42,8 +60,59 @@ export default {
       // Security settings
     }
     // Other Better Auth options...
-  }
+  },
+  plugins: [
+    // Other plugins...
+  ]
+});
+```
+
+```typescript
+// Server-side usage
+import { auth } from "@deesse/auth";
+
+// The auth object contains the complete Better Auth configuration
+// Database adapter is configured based on deesse.config.ts database settings
+// Auth options are merged from deesse.config.ts auth section
+// Admin plugin is automatically included for admin dashboard functionality
+
+// Example: Initialize Better Auth in your application
+export { auth } from "@deesse/auth";
+
+// The auth object is ready to use with all configuration applied
+// Includes admin plugin for user management and admin dashboard features
+```
+
+
+
+```typescript
+// Admin client usage (for admin dashboard)
+import { authClient } from "@deesse/auth";
+
+// Admin functions are automatically available through authClient
+const {
+  admin,
+  createUser,
+  banUser,
+  unbanUser,
+  impersonateUser,
+  // other admin functions...
+} = authClient.admin;
+
+// Example admin dashboard usage
+async function handleUserBan(userId: string) {
+  await authClient.admin.banUser(userId);
 }
+```
+
+```typescript
+// Next.js API route handler
+import { handler } from "@deesse/auth";
+
+export { handler } from "@deesse/auth";
+
+// The handler function automatically exports POST and GET methods
+// No need to manually configure toNextJsHandler
 ```
 
 ```typescript

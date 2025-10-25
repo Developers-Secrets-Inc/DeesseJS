@@ -8,6 +8,17 @@ The configuration system works with a `buildConfig` function. This function take
 
 The `buildConfig` function serves as the main configuration builder that accepts the application secret and initializes all the plugins that will extend the framework's functionality.
 
+## Global Configuration Access
+
+The configuration will be accessible globally across the entire application through a `getConfig` function, which will be available in the `/deesse/config` module. This allows you to access configuration values from any part of your codebase without having to manually pass configuration objects around.
+
+## Module Structure
+
+All configuration-related functionality will be centralized in the `/deesse/config` module. This includes:
+- `buildConfig` function for creating the configuration
+- `getConfig` function for accessing configuration globally
+- Configuration types and interfaces
+
 ## Configuration Type Definition
 
 The configuration system is built around the `Config` type, which defines the structure of the configuration object:
@@ -63,3 +74,18 @@ export default buildConfig({
   ]
 });
 ```
+
+## Using Global Configuration
+
+Once configured, you can access the configuration from anywhere in your application:
+
+```typescript
+import { getConfig } from "deesse/config";
+
+// Access configuration values
+const config = getConfig();
+console.log(config.admin.defaultLanguage);
+console.log(config.secret);
+```
+
+The `getConfig` function provides global access to the configuration without requiring you to pass configuration objects through multiple layers of your application.

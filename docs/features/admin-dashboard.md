@@ -74,13 +74,47 @@ The system implements intelligent route handling based on database state:
 6. Login flow uses authentication system
 7. Upon successful auth, user gains access to main dashboard
 
-## Plugin Extension Capabilities
+## Admin Dashboard Sidebar Structure
 
-Plugins will have the ability to extend the admin dashboard in several ways:
+The admin dashboard features a sidebar with hierarchical navigation organized into groups using shadcn/ui components.
 
-- **New Pages**: Plugins can create additional pages within the admin dashboard, extending functionality beyond the core pages.
-- **Settings Sections**: Plugins can define new sections within the settings page, allowing for plugin-specific configurations.
+### Sidebar Navigation Structure
+
+**Core Groups**:
+- **Authentication**: Pages for managing users, sessions, and authentication settings
+- **Content**: Pages for managing collections, data, and content types
+- **Settings**: Global application settings and configurations
+- **Plugins**: Plugin-specific pages and management interfaces
+
+### Plugin Extension Capabilities
+
+Plugins can extend the admin dashboard sidebar in several ways:
+
+- **New Pages**: Plugins can create additional pages within the admin dashboard, extending functionality beyond the core pages
+- **Sidebar Groups**: Plugins can define new groups in the sidebar using shadcn/ui SidebarGroup components for better organization
+- **Settings Sections**: Plugins can define new sections within the settings page, allowing for plugin-specific configurations
 - **Dashboard Components**: The admin dashboard homepage will feature an array of highlighted components. Each plugin will have the ability to create highlighted components, similar to widgets that can be loaded into this page to provide quick access to plugin-specific features and data.
+
+### Plugin Page Organization
+
+Plugins can organize their pages using two approaches:
+
+1. **Individual Pages**: Single pages that appear directly in the sidebar
+2. **Grouped Pages**: Pages organized within a SidebarGroup for better categorization
+
+**Example Plugin Structure**:
+```
+├── Plugin Pages
+│   ├── Plugin Name
+│   │   ├── Dashboard (group)
+│   │   │   ├── Overview
+│   │   │   ├── Statistics
+│   │   │   └── Settings
+│   │   └── Tools (group)
+│   │       ├── Tool 1
+│   │       ├── Tool 2
+│   │       └── Configuration
+```
 
 ## Plugins Management
 
