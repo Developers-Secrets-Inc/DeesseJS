@@ -16,12 +16,14 @@ Here's an example of a typical `deesse.config.ts` file:
 import { buildConfig } from "deesse/config";
 import { seo } from "deesse/plugins/seo";
 import { analytics } from "deesse/plugins/analytics";
-import { auth } from "deesse/plugins/auth";
 
 export default buildConfig({
   secret: process.env.DEESEE_SECRET || "your-secret-key-here",
   admin: {
     defaultLanguage: "fr"
+  },
+  auth: {
+    // Authentication configuration
   },
   plugins: [
     seo({
@@ -31,9 +33,6 @@ export default buildConfig({
     analytics({
       provider: "google",
       trackingId: "G-XXXXXXXXXX"
-    }),
-    auth({
-      // Auth plugin configuration
     })
   ]
 });
