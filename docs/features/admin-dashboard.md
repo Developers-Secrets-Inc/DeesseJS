@@ -8,13 +8,71 @@ All pages related to the admin dashboard will be in a Next.js dynamic page at `/
 
 The admin dashboard will include the following core pages:
 
-- **Superadmin Creation Page**: A page for creating the first superadmin account when the system is initialized for the first time.
-- **Login Page**: A page for administrators to sign in to their accounts.
+- **First User Page (`/first-user`)**: A special page accessible only in local development when no admin exists in the database yet. Used for creating the first superadmin account.
+- **Login Page (`/login`)**: A page for administrators to sign in to their accounts.
 - **Dashboard Page**: The main admin dashboard page providing an overview and quick access to all features.
 - **Collections Page**: A page for managing all data collections and their elements.
 - **Users Page**: A page for managing admin users and their permissions.
 - **Settings Page**: A page for configuring global admin settings and preferences.
 - **Profile Page**: A page for the current admin to manage their own profile information.
+
+## CLI Configuration
+
+- **CLI Setup Option**: During project initialization, users will have the option to create a superadmin account through the CLI
+- **Interactive Setup**: The CLI will prompt for admin credentials during project setup if no admin exists
+- **Configuration Integration**: Admin setup will be integrated into the deesse.config.ts file configuration process
+- **Production Ready**: CLI setup ensures a production-ready admin account from the start
+
+## Layout and Security
+
+### RootLayout Component
+The admin dashboard will feature a `RootLayout` component that provides automatic security and redirection:
+
+- **Automatic Redirection**: Non-admin users will be automatically redirected away from admin pages
+- **Route Protection**: All admin pages are protected and require authentication
+- **Development Access**: The `/first-user` page is only accessible during local development when no admin exists
+- **Seamless Integration**: RootLayout handles authentication state and ensures only authorized users can access admin functionality
+
+### Route Handling and Redirection Logic
+The system implements intelligent route handling based on database state:
+
+**Redirection Behavior**:
+- When user navigates to `/admin`, the system automatically redirects to the appropriate page:
+  - If an admin exists in database → redirect to `/admin/login`
+  - If no admin exists in database → redirect to `/admin/first-user`
+
+### Component Architecture
+
+**Page Components (Conditional Rendering)**:
+- **Login Component**: Renders login form with email and password fields
+- **FirstUser Component**: Renders first user creation form with name, email, password, and confirm password fields
+- **Dashboard Component**: Main admin interface (only when authenticated)
+- All components are rendered conditionally based on authentication state and database status
+
+### Server Functions
+
+**Server-side Functions**:
+1. **`hasAdmin()`**: Server function that checks if any admin exists in the database
+   - Returns boolean indicating admin presence
+   - Used by RootLayout for initial redirection logic
+   - Perform database query to admin users table
+
+2. **`createFirstAdmin(data)`**: Server function that creates the first admin account
+   - Accepts typed user data: `{name: string, email: string, password: string, confirmPassword: string}`
+   - Validates password confirmation matches password
+   - Creates admin user with appropriate permissions
+   - Returns success/error response with user info
+
+### Server-Client Flow
+
+**Authentication Flow**:
+1. User visits `/admin`
+2. RootLayout calls `hasAdmin()` server function
+3. Based on response, redirects to appropriate sub-route
+4. User fills respective form component
+5. First-user flow uses `createFirstAdmin()` server function
+6. Login flow uses authentication system
+7. Upon successful auth, user gains access to main dashboard
 
 ## Plugin Extension Capabilities
 

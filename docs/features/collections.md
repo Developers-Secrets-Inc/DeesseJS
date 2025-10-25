@@ -7,7 +7,7 @@ Collections will be defined using a hidden Zod-based DSL that provides a clean, 
 Each field is defined using the `field()` function with a configuration object that includes the type and permissions:
 
 ```typescript
-export const PostSchema = defineSchema({
+export const PostSchema = collection({
   title: field({
     type: text(),
     permissions: {
@@ -64,6 +64,15 @@ export const PostSchema = defineSchema({
     }
   })
 });
+
+export const PostConfig = {
+  slug: 'posts', // String used as database identifier
+  admin: {
+    group: 'Content', // Optional field for grouping collections in admin interface
+    description: 'Blog posts and articles published on the site',
+    useAsTitle: 'title' // Field name to use as the main title for each element
+  }
+};
 ```
 
 ## Database Access System
@@ -248,3 +257,77 @@ This strong typing approach provides several security advantages:
 - **Consistent Validation**: Same validation logic applies across all operations
 - **Detailed Error Messages**: Clear validation errors help developers fix data issues quickly
 - **Runtime Introspection**: The collections API provides access to schema information for dynamic UI generation and permission checking
+
+## Collection Hooks
+
+Each collection provides a set of hooks that allow developers to run custom logic at different stages of the data lifecycle. These hooks enable complex business logic, data transformation, and event handling.
+
+### Hook Configuration Options
+
+Each collection can be configured with hooks at the following stages:
+
+- **Config Options**: Global configuration for collection-level behavior
+
+### Operation Hooks
+
+**beforeOperation**:
+- Executed before any database operation
+- Global pre-operation logic validation
+- Authorization and security checks
+- Operation logging and monitoring
+
+**afterOperation**:
+- Executed after any database operation completes
+- Global post-operation cleanup
+- Success/error logging and metrics
+- Integration with external services
+
+### Validate Hooks
+
+**beforeValidate**:
+- Field-level validation logic
+- Cross-field validation rules
+- Custom validation functions
+- Format and constraint checking
+
+### Change Hooks
+
+**beforeChange**:
+- Pre-update data transformation
+- Automating field updates
+- Preventing changes based on business rules
+- Setting derived fields
+
+**afterChange**:
+- Post-update notification systems
+- Cache invalidation
+- Related data synchronization
+- Audit trail logging
+
+### Read Hooks
+
+**beforeRead**:
+- Data filtering and masking
+- Dynamic field visibility
+- row-level security enforcement
+- Query optimization hooks
+
+**afterRead**:
+- Data transformation after retrieval
+- Field computation
+- Caching mechanisms
+- Related data loading
+
+### Delete Hooks
+
+**beforeDelete**:
+- Soft deletion logic
+- Cascade deletion prevention
+- Dependency checks
+- Archive operations
+
+**afterDelete**:
+- Cleanup operations
+- Cache invalidation
+- External service notifications
+- Audit logging for deletions
