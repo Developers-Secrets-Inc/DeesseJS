@@ -1,0 +1,27 @@
+{
+  "name": "@deessejs/admin",
+  "version": "0.0.5",
+  "description": "Admin dashboard for deessejs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
