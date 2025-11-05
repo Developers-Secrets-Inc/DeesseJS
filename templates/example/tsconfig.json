@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "./*"
+      ],
+      "@deesse-config": [
+        "./deesse.config.ts"
       ]
     }
   },

@@ -1,22 +1,18 @@
-import { LoginPage } from "../pages/login-page";
+import { Config } from "deesse";
 
-export const RootLayout: React.FC<{ segments: string[] }> = ({
+import { LoginPage } from "../pages/login-page";
+import { DashboardLayout } from "./dashboard-layout";
+
+export const RootLayout: React.FC<{ segments: string[]; config: Config }> = ({
   segments,
+  config,
 }: {
   segments: string[];
+  config: Config;
 }) => {
   if (segments.includes("login")) {
     return <LoginPage />;
   }
-  
-  return (
-    <div>
-      <h1>Root Layout</h1>
-      <ul>
-        {segments.map((segment, index) => (
-          <li key={index}>{segment}</li>
-        ))}
-      </ul>
-    </div>
-  );
+
+  return <DashboardLayout />;
 };

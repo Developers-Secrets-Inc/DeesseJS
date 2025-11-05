@@ -11,3 +11,7 @@
   - changelog 
   - docs 
 - admin notifications 
+
+
+
+- supabase support, sqlite, mongodb, complete vercel support, expo integration, triggerdotdev, upstash
