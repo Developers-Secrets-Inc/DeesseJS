@@ -1,3 +1,2 @@
-export * from './config';
-export * from './collections';
-export * from './database'
+export * from "./config";
+export * from "./auth";

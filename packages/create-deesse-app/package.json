@@ -1,0 +1,49 @@
+{
+  "name": "create-deesse-app",
+  "version": "0.0.17",
+  "main": "dist/index.js",
+  "bin": {
+    "create-deesse-app": "./dist/index.js"
+  },
+  "types": "dist/index.d.ts",
+  "module": "dist/index.esm.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run copy:templates && tsc",
+    "build:watch": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest watch",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "start": "node dist/index.js",
+    "copy:templates": "node scripts/copy-templates.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "CLI initialize a DeesseJS application",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/prompts": "^2.4.9",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "picocolors": "^1.1.1",
+    "prompts": "^2.4.2"
+  }
+}

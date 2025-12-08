@@ -1,0 +1,1 @@
+I want this project to create a set of globals features for the web, like discord did with it's own API.

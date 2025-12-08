@@ -1,13 +1,5 @@
-import { AnyCollection } from "../collections";
-
-export type AdminConfig = {
-  defaultLanguage?: string;
-};
-
-export type AuthConfig = {};
+import { BetterAuthOptions } from "better-auth";
 
 export type Config = {
-  admin: AdminConfig;
-  auth: AuthConfig;
-  collections: AnyCollection[];
+  auth: BetterAuthOptions;
 };

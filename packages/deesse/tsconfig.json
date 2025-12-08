@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "jsx": "react-jsx",
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
     "declaration": true,
-    "emitDeclarationOnly": false,
-    "outDir": "dist",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "types": ["node", "vitest/globals"]
   },
-  "include": ["src"]
+  "include": ["src/**/*", "test/types/result.test.ts"],
+  "exclude": ["node_modules", "dist", "test"]
 }
