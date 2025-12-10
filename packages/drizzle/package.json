@@ -1,7 +1,6 @@
 {
-  "name": "deesse",
-  "version": "0.1.12",
-  "description": "The fullstack web framework",
+  "name": "@deessejs/drizzle",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "module": "dist/index.esm.js",
@@ -37,7 +36,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "better-auth": "^1.4.3",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.0",
     "pg": "^8.16.3"
   },
   "devDependencies": {
@@ -52,10 +52,11 @@
     "@vitest/coverage-istanbul": "^4.0.14",
     "@vitest/coverage-v8": "^4.0.13",
     "@vitest/ui": "^4.0.13",
-    "drizzle-orm": "^0.45.0",
+    "drizzle-kit": "^0.31.8",
     "eslint": "^8.0.0",
     "jsdom": "^27.2.0",
     "sinon": "^21.0.0",
+    "tsx": "^4.21.0",
     "typescript": "^5.0.0",
     "vitest": "^4.0.13"
   }

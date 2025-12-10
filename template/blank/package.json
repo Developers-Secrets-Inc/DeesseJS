@@ -9,8 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "deesse": "^0.1.2",
-    "next": "16.0.5",
+    "deesse": "^0.1.4",
+    "next": "16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
