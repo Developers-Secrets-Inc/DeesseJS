@@ -1,5 +1,6 @@
-import { defineConfig } from 'deesse';
+import { drizzle } from "@deessejs/drizzle";
+import { defineConfig } from "deesse";
 
-export default defineConfig({
-  databaseUrl: process.env.DATABASE_URL,
-})
+export const config = defineConfig({
+  database: drizzle(process.env.DATABASE_URL!),
+});

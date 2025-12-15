@@ -27,13 +27,14 @@
     "@types/jsdom": "^27.0.0",
     "@types/node": "^20.0.0",
     "@types/pg": "^8.15.6",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@types/sinon": "^21.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitest/coverage-istanbul": "^4.0.14",
     "@vitest/coverage-v8": "^4.0.13",
     "@vitest/ui": "^4.0.13",
-    "deesse": "^0.1.7",
     "eslint": "^8.0.0",
     "jsdom": "^27.2.0",
     "sinon": "^21.0.0",
@@ -41,5 +42,10 @@
     "vitest": "^4.0.13"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "peerDependencies": {
+    "deesse": "^0.1.13",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  }
 }
